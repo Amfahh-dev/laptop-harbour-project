@@ -1,0 +1,80 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run -d chrome
+
+## exception
+
+RPCError: ext.flutter.debugDumpFocusTree: (-32603) Unexpected DWDS error for callServiceExtension: Unexpected error from chrome devtools:
+text: Uncaught (in promise)
+exception:
+  preview: null
+  description: null
+  type: string
+  value: Unexpected null value.
+attempted JS eval: `require("dart_sdk").developer.invokeExtension(
+    "ext.flutter.debugDumpFocusTree", JSON.stringify({}));
+`
+
+
+```
+#0      new _OutstandingRequest (package:vm_service/src/vm_service.dart:265:34)
+#1      VmService._call.<anonymous closure> (package:vm_service/src/vm_service.dart:1772:25)
+#2      VmService._call (package:vm_service/src/vm_service.dart:1784:8)
+#3      VmService.callServiceExtension (package:vm_service/src/vm_service.dart:1733:14)
+#4      FlutterVmService._checkedCallServiceExtension (package:flutter_tools/src/vmservice.dart:868:28)
+#5      FlutterVmService.invokeFlutterExtensionRpcRaw (package:flutter_tools/src/vmservice.dart:887:49)
+#6      FlutterVmService.flutterDebugDumpFocusTree (package:flutter_tools/src/vmservice.dart:645:50)
+#7      ResidentHandlers.debugDumpFocusTree (package:flutter_tools/src/resident_runner.dart:774:53)
+<asynchronous suspension>
+#8      TerminalHandler.processTerminalInput (package:flutter_tools/src/resident_runner.dart:1841:7)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 3.22.2, on Microsoft Windows [Version 10.0.19045.4894], locale en-PK)
+    • Flutter version 3.22.2 on channel stable at C:\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 761747bfc5 (4 months ago), 2024-06-05 22:15:13 +0200
+    • Engine revision edd8546116
+    • Dart version 3.4.3
+    • DevTools version 2.34.3
+
+[✓] Windows Version (Installed version of Windows is version 10 or higher)
+
+[✗] Android toolchain - develop for Android devices
+    • Android SDK at C:\Users\Zaid Ahmed\Downloads\adb
+    ✗ cmdline-tools component is missing
+      Run `path/to/sdkmanager --install "cmdline-tools;latest"`
+      See https://developer.android.com/studio/command-line for more details.
+
+[✓] Chrome - develop for the web
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[✗] Visual Studio - develop Windows apps
+    ✗ Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[!] Android Studio (not installed)
+    • Android Studio not found; download from https://developer.android.com/studio/index.html
+      (or visit https://flutter.dev/docs/get-started/install/windows#android-setup for detailed instructions).
+
+[✓] VS Code (version 1.93.1)
+    • VS Code at C:\Users\Zaid Ahmed\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.96.0
+
+[✓] Connected device (3 available)
+    • Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.19045.4894]
+    • Chrome (web)      • chrome  • web-javascript • Google Chrome 129.0.6668.70
+    • Edge (web)        • edge    • web-javascript • Microsoft Edge 129.0.2792.65
+
+[✓] Network resources
+    • All expected network resources are available.
+
+! Doctor found issues in 3 categories.
+```
